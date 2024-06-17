@@ -12,6 +12,9 @@ gem 'cssbundling-rails'
 gem 'jbuilder'
 gem 'tzinfo-data', platforms: %i[ windows jruby ]
 gem 'bootsnap', require: false
+gem "stackprof"
+gem "sentry-ruby"
+gem "sentry-rails"
 
 group :development, :test, :production do
   gem 'pg', '~> 1.4'
