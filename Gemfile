@@ -18,6 +18,7 @@ gem "sentry-rails"
 gem 'simple_form'
 gem 'slim-rails'
 gem 'bundle-audit'
+gem 'brakeman'
 
 group :development, :test, :production do
   gem 'pg', '~> 1.4'
