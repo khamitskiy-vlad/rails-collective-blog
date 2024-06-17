@@ -15,7 +15,7 @@ gem 'bootsnap', require: false
 
 group :development, :test do
   gem 'debug', platforms: %i[ mri windows ]
-  gem 'sqlite3', '~> 1.4'
+  gem 'pg', '~> 1.4'
 end
 group :development do
   gem 'web-console'
@@ -27,5 +27,5 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 1.4'
 end
