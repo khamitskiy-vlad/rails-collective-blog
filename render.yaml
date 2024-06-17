@@ -1,6 +1,6 @@
 databases:
-  - name: rails-project-64-corporate-blog
-    databaseName: rails_project_64_development
+  - name: rails_project_64_production
+    databaseName: rails_project_64_production
     user: rails_project_64
     plan: free
 
@@ -15,7 +15,7 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: rails_project_64_development
+          name: rails_project_64_production
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
