@@ -2,6 +2,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV['DATABASE_URL'] %>
 
 development:
   <<: *default
@@ -16,4 +17,3 @@ production:
   database: rails_project_64_production
   username: rails_project_64
   password: <%= ENV["RAILS_PROJECT_64_DATABASE_PASSWORD"] %>
-  url: <%= ENV['DATABASE_URL'] %>
