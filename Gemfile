@@ -17,6 +17,7 @@ gem "sentry-ruby"
 gem "sentry-rails"
 gem 'simple_form'
 gem 'slim-rails'
+gem 'bundle-audit'
 
 group :development, :test, :production do
   gem 'pg', '~> 1.4'
