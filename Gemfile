@@ -13,9 +13,12 @@ gem 'jbuilder'
 gem 'tzinfo-data', platforms: %i[ windows jruby ]
 gem 'bootsnap', require: false
 
+group :development, :test, :production do
+  gem 'pg', '~> 1.4'
+end
+
 group :development, :test do
   gem 'debug', platforms: %i[ mri windows ]
-  gem 'pg', '~> 1.4'
 end
 group :development do
   gem 'web-console'
@@ -24,8 +27,4 @@ end
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
-end
-
-group :production do
-  gem 'pg', '~> 1.4'
 end

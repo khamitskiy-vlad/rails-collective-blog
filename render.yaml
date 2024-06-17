@@ -1,6 +1,6 @@
 databases:
   - name: rails-project-64-corporate-blog
-    databaseName: rails_project_64_production
+    databaseName: rails_project_64_development
     user: rails_project_64
     plan: free
 
@@ -11,11 +11,11 @@ services:
     plan: free
     buildCommand: "./bin/render-build.sh"
     # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
-    startCommand: "bundle exec rails server"
+    startCommand: "./bin/render-start.sh"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: rails_project_64_production
+          name: rails_project_64_development
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false

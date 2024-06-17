@@ -16,3 +16,4 @@ production:
   database: rails_project_64_production
   username: rails_project_64
   password: <%= ENV["RAILS_PROJECT_64_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
