@@ -8,6 +8,7 @@ gem 'bootsnap', require: false
 gem 'brakeman'
 gem 'bundle-audit'
 gem 'cssbundling-rails'
+gem 'devise', '~> 4.9'
 gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'puma', '>= 5.0'
