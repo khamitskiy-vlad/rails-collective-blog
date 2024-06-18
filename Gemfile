@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 ruby '3.2.2'
 
 gem 'bootsnap', require: false
+gem 'bootstrap', '~> 5.3.3'
 gem 'brakeman'
 gem 'bundle-audit'
 gem 'cssbundling-rails'
@@ -22,7 +23,6 @@ gem 'stackprof'
 gem 'stimulus-rails'
 gem 'turbo-rails', '~> 1.0.0'
 gem 'tzinfo-data', platforms: %i[windows jruby]
-gem 'bootstrap', '~> 5.3.3'
 
 group :development, :test, :production do
   gem 'pg', '~> 1.4'

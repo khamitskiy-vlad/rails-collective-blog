@@ -3,30 +3,30 @@ html.h-100
   head
     title
       | DigiBash
-    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    meta[name='viewport' content='width=device-width,initial-scale=1']
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag "application", "data-turbo-track": "reload"
-    = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
+    = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbo-track': 'reload', type: 'module'
   body.d-flex.flex-column.h-100
-    div.container.mb-2
-      div.d-flex.flex-wrap.align-items-center.py-2.border-bottom
-        div.navbar.navbar-expand-md.navbar-light.me-auto
-          div.container-fluid
-            a.navbar-brand.me-md-4[href="/"] DigiBash
+    .container.mb-2
+      .d-flex.flex-wrap.align-items-center.py-2.border-bottom
+        .navbar.navbar-expand-md.navbar-light.me-auto
+          .container-fluid
+            a.navbar-brand.me-md-4[href='/'] DigiBash
           ul.navbar-nav.me-auto.mb-2.mb-md-0
             li.nav-item
-              a.nav-link.active[aria-current="page" href="/"] Home
-        div.col-md-3.text-end
+              a.nav-link.active[aria-current='page' href='/'] Home
+        .col-md-3.text-end
           ul.nav.nav-pills
             li.nav-item.me-2
-              a.nav-link.link-dark[href="/users/sign_in/"] Log in 
+              a.nav-link.link-dark[href='/users/sign_in/'] Log in
             li.nav-item.me-2
-              a.nav-link.link-secondary[href="/users/sign_up/"] Sign up
-    div.container.my-4
+              a.nav-link.link-secondary[href='/users/sign_up/'] Sign up
+    .container.my-4
       div
         = yield
     footer.footer.mt-auto.py-3.bg-light
-      div.container
+      .container
         span.text-muted
           | Place sticky footer content here.
