@@ -1,13 +1,2 @@
 h1
   | Welcome, this is the home page
-button.btn.btn-lg.btn-danger[type="button" data-bs-toggle="popover" title="Popover title" data-bs-content="Amazing content, right ?"]
-  |  Click to toggle popover 
-- if user_signed_in?
-  span
-    | Здравствуйте, 
-    = current_user.email
-  = link_to 'Выйти', destroy_user_session_path, data: { "turbo-method": :delete }
-- else
-  = link_to 'Войти', new_user_session_path
-  |  или 
-  = link_to 'Зарегистрироваться', new_user_registration_path
