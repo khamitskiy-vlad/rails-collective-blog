@@ -21,6 +21,7 @@ gem 'stackprof'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
+gem 'devise', "~> 4.9"
 
 group :development, :test, :production do
   gem 'pg', '~> 1.4'
@@ -45,5 +46,3 @@ group :test do
   gem 'minitest-power_assert'
   gem 'selenium-webdriver'
 end
-
-gem "devise", "~> 4.9"
