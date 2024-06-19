@@ -1,0 +1,5 @@
+= simple_form_for @post do |f|
+  = f.input :title
+  = f.input :body
+  = f.association :category, collection: Category.active.order(:name), prompt: "Choose a Category"
+  = f.button :submit

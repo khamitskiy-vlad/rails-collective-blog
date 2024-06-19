@@ -1,0 +1,8 @@
+p
+  | Creator: 
+  = link_to (post.creator.username || post.creator.email), user_path(post.creator)
+p
+  strong
+    = link_to post.title, post_path(post)
+p 
+  = post.body
