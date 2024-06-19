@@ -12,13 +12,18 @@ html.h-100
     .container.mb-2
       .d-flex.flex-wrap.align-items-center.py-2.border-bottom
         .navbar.navbar-expand-md.navbar-light.me-auto
-          .container-fluid
+          .container-fluid.p-0
             a.navbar-brand.me-md-4[href='/'] 
               img[width='20' src='/digibash_logo.png']
-              text.fw-semibold #{' '}DigiBash
+              text.fw-semibold 
+                |  ДигиБаш
           ul.navbar-nav.me-auto.mb-2.mb-md-0
-            li.nav-item
-              a.nav-link.active[aria-current='page' href='/'] Home
+            li.nav-item.dropdown
+               a.nav-link.dropdown-toggle[id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"] Категории
+               ul.dropdown-menu[aria-labelledby="navbarDropdown"]
+                 - Category.all.each do |category|
+                   li= link_to category.name, category_path(category), class: "dropdown-item"
+
         .col-md-3.text-end
           ul.nav.nav-pills
             - if user_signed_in?
@@ -26,15 +31,14 @@ html.h-100
                 a.nav-link.link-dark[href="/users/#{current_user.id}"]
                   | #{current_user.username || current_user.email}
               li.nav-item.me-2
-                a.nav-link.link-secondary[href='/users/sign_out' data-turbo-method="delete"] Sign out
+                a.nav-link.link-secondary[href='/users/sign_out' data-turbo-method="delete"] Выйти
             - else
               li.nav-item.me-2
-                a.nav-link.link-dark[href='/users/sign_in/'] Log in
+                a.nav-link.link-dark[href='/users/sign_in/'] Войти
               li.nav-item.me-2
-                a.nav-link.link-secondary[href='/users/sign_up/'] Sign up
+                a.nav-link.link-secondary[href='/users/sign_up/'] Зарегистрироваться
 
-    .container.my-4
-      div
+    .container.my-3
         = yield
     footer.footer.mt-auto.py-3.bg-light
       .container
