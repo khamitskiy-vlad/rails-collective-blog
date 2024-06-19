@@ -1,11 +1,10 @@
-# frozen_string_literal: true
+["Разработка", "Администрирование", "Дизайн", "Менеджмент", "Маркетинг", "Научпоп"].each do |category_name|
+  Category.find_or_create_by!(name: category_name)
+end
 
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+Post.create(
+  title: 'Как покупать акции технокомпаний в 4 раза дороже?',
+  body: 'Сегодня хочу поговорить о довольно непривычной для себя теме: рынке акций. Но не об обычном, а нишевом, куда меня привёл случай, который показал просто наглейшие и неприкрытые схемы хомячества, притом не связанные с криптой. Речь пойдёт о сфере Pre-IPO, и рынок этот немного отличается от обычных инвестиций в биржевые акции. Если не знаете, что такое Pre-IPO, объясню: до того как компании выходят на фондовую биржу, они, как правило, привлекает деньги от фондов и индивидуальных инвесторов путем выпуска акций. Тоесть Pre-IPO – это те компании, которые уже в ближайшие 1-2 года планируют листинг своих акций на бирже. Купить такие акции намного сложнее, а минимальные суммы сделок стартуют от сотен тысяч долларов. Но в момент листинга на бирже (IPO) данные акции имеют хорошие шансы серьезно вырасти.',
+  creator_id: 1,
+  category_id: 1 
+)
