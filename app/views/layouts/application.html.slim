@@ -21,10 +21,18 @@ html.h-100
               a.nav-link.active[aria-current='page' href='/'] Home
         .col-md-3.text-end
           ul.nav.nav-pills
-            li.nav-item.me-2
-              a.nav-link.link-dark[href='/users/sign_in/'] Log in
-            li.nav-item.me-2
-              a.nav-link.link-secondary[href='/users/sign_up/'] Sign up
+            - if user_signed_in?
+              li.nav-item.me-2
+                a.nav-link.link-dark[href="/users/#{current_user.id}"]
+                  | #{current_user.username || current_user.email}
+              li.nav-item.me-2
+                a.nav-link.link-secondary[href='/users/sign_out' data-turbo-method="delete"] Sign out
+            - else
+              li.nav-item.me-2
+                a.nav-link.link-dark[href='/users/sign_in/'] Log in
+              li.nav-item.me-2
+                a.nav-link.link-secondary[href='/users/sign_up/'] Sign up
+
     .container.my-4
       div
         = yield
