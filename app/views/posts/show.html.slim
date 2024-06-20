@@ -1,0 +1,6 @@
+= render @post
+div
+  = link_to 'Назад к постам', root_path
+  - if user_signed_in? && current_user.posts.include?(@post)
+    = link_to 'Редактировать', edit_post_path(@post)
+    = button_to 'Удалить', @post, method: :delete

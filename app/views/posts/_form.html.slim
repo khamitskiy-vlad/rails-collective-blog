@@ -1,0 +1,5 @@
+= simple_form_for @post do |f|
+  = f.input :title, label: 'Заголовок'
+  = f.input :body, label: 'Пост'
+  = f.association :category, collection: @categories, prompt: 'Выберите категорию'
+  = f.submit 'Опубликовать'

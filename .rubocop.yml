@@ -51,3 +51,6 @@ Style/Documentation:
 
 Style/IfUnlessModifier:
   Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
