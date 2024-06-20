@@ -2,17 +2,15 @@ h1.mb-3.fw-semibold Лента
 .row
   .col-md-12
     .mb-3
-      - Post.all.order(created_at: :desc).each do |post|
+      - @posts.each do |post|
         .border.rounded-3.mb-3.px-3.py-2
           small.lh-1
-            = link_to (post.creator.username || post.creator.email), user_path(post.creator), class: "link-dark text-decoration-none"
-            |   
-            span.fw-lighter= time_ago_in_words(post.created_at)
-            |   
+            span> = link_to (post.creator.username || post.creator.email), user_path(post.creator), class: 'link-dark text-decoration-none'
+            span.fw-lighter = time_ago_in_words(post.created_at)
             p.pe-auto.mb-1
-              = link_to post.category.name, category_path(post.category), class: "link-dark text-decoration-none"
+              = link_to post.category.name, category_path(post.category), class: 'link-dark text-decoration-none'
           h2
-            = link_to post.title, post_path(post), class: "link-dark text-decoration-none"
+            = link_to post.title.truncate(75), post_path(post), class: 'link-dark text-decoration-none'
           span.m-0
             = post.body.truncate(400, omission: '... ')
-            = link_to "читать далее", post_path(post), class: 'text-decoration-none' if post.body.length >= 400
+            = link_to 'читать далее', post_path(post), class: 'text-decoration-none' if post.body.length > 400
