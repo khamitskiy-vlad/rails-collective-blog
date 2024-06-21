@@ -15,7 +15,7 @@ html.h-100
           .container-fluid.p-0
             a.navbar-brand.me-md-4[href='/']
               img[width='20' src='/digibash_logo.png']
-              text.fw-semibold<
+              text.fw-semibold.me-1<
                   | ДигиБаш
           .container-fluid.p-0
             ul.navbar-nav.me-auto.mb-2.mb-md-0
@@ -29,18 +29,17 @@ html.h-100
               ul.nav.nav-pills
                 li.nav-item
                   = link_to 'Написать пост', new_post_path, class: 'nav-link link-dark p-0 ms-2'
-        .col-md-3.text-end
-          ul.nav.nav-pills
-            - if user_signed_in?
-              li.nav-item.me-2
-                = link_to (current_user.username || current_user.email), user_path(current_user), class: 'nav-link link-dark'
-              li.nav-item.me-2
-                a.nav-link.link-secondary[href='/users/sign_out' data-turbo-method='delete'] Выйти
-            - else
-              li.nav-item.me-2
-                a.nav-link.link-dark[href='/users/sign_in/'] Войти
-              li.nav-item.me-2
-                a.nav-link.link-secondary[href='/users/sign_up/'] Зарегистрироваться
+        ul.nav.nav-pills
+          - if user_signed_in?
+            li.nav-item.me-2
+              = link_to (current_user.username || current_user.email), user_path(current_user), class: 'nav-link link-dark'
+            li.nav-item.me-0
+              a.nav-link.link-secondary.pe-0[href='/users/sign_out' data-turbo-method='delete'] Выйти
+          - else
+            li.nav-item.me-2
+              a.nav-link.link-dark[href='/users/sign_in/'] Войти
+            li.nav-item.me-0
+              a.nav-link.link-secondary.pe-0[href='/users/sign_up/'] Зарегистрироваться
     .container.my-3
         = yield
     footer.footer.mt-auto.py-3.bg-light
