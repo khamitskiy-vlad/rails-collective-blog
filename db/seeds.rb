@@ -1,8 +1,29 @@
 # frozen_string_literal: true
 
-%w[Разработка Администрирование Дизайн Менеджмент Маркетинг Научпоп].each do |category_name|
-  Category.find_or_create_by!(name: category_name)
-end
+Category.create!([{
+  name: 'Разработка',
+  route: 'development'
+},
+{
+  name: 'Администрирование',
+  route: 'administration'
+},
+{
+  name: 'Дизайн',
+  route: 'design'
+},
+{
+  name: 'Менеджмент',
+  route: 'management'
+},
+{
+  name: 'Маркетинг',
+  route: 'marketing'
+},
+{
+  name: 'Научпоп',
+  route: 'science'
+}])
 
 User.create!(username: 'John Doe',
              email: 'john@gmail.com',
