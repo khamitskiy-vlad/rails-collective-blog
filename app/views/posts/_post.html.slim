@@ -1,10 +1,4 @@
-p
-  strong
-    = post.title
-p
+h2.mb-3
+  = post.title
+p.fs-5
   = post.body
-
-p
-  = link_to (post.creator.username || post.creator.email), user_path(post.creator)
-  span<
-    = time_ago_in_words(post.created_at)
