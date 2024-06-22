@@ -1,6 +1,20 @@
+h1.mb-3.fw-semibold>
+  = link_to 'Лента', root_path, class: 'link-dark text-decoration-none'
+  span.fw-lighter
+    |<> /
+  = link_to @post.category.name, category_path(@post.category), class: 'link-dark text-decoration-none'
+  span.fw-lighter
+    |<> /
+  | Пост
+.mb-3
+  small.lh-1
+    span> = link_to (@post.creator.username || @post.creator.email), user_path(@post.creator), class: 'link-dark text-decoration-none'
+    span.fw-lighter = time_ago_in_words(@post.created_at)
+    - if user_signed_in? && current_user.posts.include?(@post)
+      i.bi.bi-pencil-square<
+        = link_to 'Редактировать', edit_post_path(@post), class: 'link-dark text-decoration-none'
+      i.bi.bi-trash3<
+        = link_to 'Удалить', @post, data: { turbo_method: :delete, confirm: 'Пост будет удален, вы уверены?' }, class: 'link-secondary text-decoration-none'
 = render @post
 div
-  = link_to 'Назад к постам', root_path
-  - if user_signed_in? && current_user.posts.include?(@post)
-    = link_to 'Редактировать', edit_post_path(@post)
-    = button_to 'Удалить', @post, method: :delete
+  = link_to 'Назад к постам', :back, class: 'text-decoration-none'
