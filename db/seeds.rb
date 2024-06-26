@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-Category.destroy_all
-Rails.logger.debug 'Categories was deleted' if Category.all.empty?
+# Category.destroy_all
+# Rails.logger.debug 'Categories was deleted' if Category.all.empty?
 
-Post.destroy_all
-Rails.logger.debug 'Posts was deleted' if Post.all.empty?
+# Post.destroy_all
+# Rails.logger.debug 'Posts was deleted' if Post.all.empty?
 
-User.destroy_all
-Rails.logger.debug 'Users was deleted' if User.all.empty?
+# User.destroy_all
+# Rails.logger.debug 'Users was deleted' if User.all.empty?
 
 Category.create!([{
                    name: 'Разработка',
