@@ -1,8 +1,14 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :posts, except: :index
-  resources :categories, only: :show
+  shallow do
+    resources :categories, param: :route, only: :show do
+      resources :posts, except: %i[index show new create]
+    end
+  end
+
+  resources :posts, only: %i[new create show]
+
   devise_for :users
 
   root 'home#index'

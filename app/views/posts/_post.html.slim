@@ -1,9 +1,4 @@
-p>
-  |
-    Creator:
-  = link_to (post.creator.username || post.creator.email), user_path(post.creator)
-p
-  strong
-    = post.title
-p
+h2.mb-3
+  = post.title
+p.fs-5
   = post.body

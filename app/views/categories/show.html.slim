@@ -1,1 +1,11 @@
-=render @category
+h1.mb-3.fw-semibold>
+  = link_to 'Лента', root_path, class: 'link-dark text-decoration-none'
+  span.fw-lighter
+    |<> /
+  = @category.name
+.row
+  .col-md-12
+    .mb-3
+      =render @category
+div
+  = link_to 'Ко всем постам', root_path, class: 'text-decoration-none'

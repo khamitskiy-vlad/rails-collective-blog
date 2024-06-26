@@ -9,7 +9,7 @@ h1.mb-3.fw-semibold Лента
             span.fw-lighter = time_ago_in_words(post.created_at)
             p.pe-auto.mb-1
               = link_to post.category.name, category_path(post.category), class: 'link-dark text-decoration-none'
-          h2
+          h3
             = link_to post.title.truncate(75), post_path(post), class: 'link-dark text-decoration-none'
           span.m-0
             = post.body.truncate(400, omission: '... ')

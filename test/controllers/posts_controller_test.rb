@@ -3,38 +3,63 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
-  # test 'should get index' do
-  #   get posts_index_url
-  #   assert_response :success
-  # end
+  include Devise::Test::IntegrationHelpers
 
-  # test 'should get show' do
-  #   get posts_show_url
-  #   assert_response :success
-  # end
+  setup do
+    @post = posts(:one)
+    @attributes = {
+      id: @post.id,
+      title: Faker::Lorem.question,
+      body: Faker::Lorem.paragraph,
+      creator_id: @post.creator_id,
+      category_id: @post.category_id
+    }
+    @user = users(:one)
+  end
 
-  # test 'should get new' do
-  #   get posts_new_url
-  #   assert_response :success
-  # end
+  test 'should get show' do
+    get post_url(@post)
+    assert_response :success
+  end
 
-  # test 'should get create' do
-  #   get posts_create_url
-  #   assert_response :success
-  # end
+  test 'should get new' do
+    get new_post_path
+    assert_response :success
+  end
 
-  # test 'should get edit' do
-  #   get posts_edit_url
-  #   assert_response :success
-  # end
+  test 'should get create' do
+    sign_in @user
 
-  # test 'should get update' do
-  #   get posts_update_url
-  #   assert_response :success
-  # end
+    new_attributes = @attributes.dup
+    new_attributes[:id] += 1
 
-  # test 'should get destroy' do
-  #   get posts_destroy_url
-  #   assert_response :success
-  # end
+    post posts_url, params: { post: new_attributes }
+
+    post = Post.find_by new_attributes
+
+    assert { post }
+    assert_redirected_to post_url(post)
+  end
+
+  test 'should get edit' do
+    get edit_post_path(@post)
+    assert_response :success
+  end
+
+  test 'should get update' do
+    patch post_url(@post), params: { post: @attributes }
+    assert_redirected_to post_url(@post)
+
+    @post.reload
+
+    assert { @post.title == @attributes[:title] }
+  end
+
+  test 'should get destroy' do
+    delete post_url(@post)
+
+    assert_redirected_to root_path
+
+    assert { !Post.exists? @post.id }
+  end
 end
