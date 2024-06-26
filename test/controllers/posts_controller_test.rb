@@ -3,15 +3,18 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @post = posts(:one)
     @attributes = {
       id: @post.id,
       title: Faker::Lorem.question,
-      body: @post.body,
+      body: Faker::Lorem.paragraph,
       creator_id: @post.creator_id,
-      category_id: @post.category_id 
+      category_id: @post.category_id
     }
+    @user = users(:one)
   end
   
   test 'should get show' do
@@ -24,22 +27,19 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test 'should get create' do
-  #   attributes = {
-  #     id: 2,
-  #     title: @post.title,
-  #     body: @post.body,
-  #     creator_id: @post.creator_id,
-  #     category_id: @post.category_id 
-  #   }
+  test 'should get create' do
+    sign_in @user
 
-  #   post posts_url, params: { post: attributes }
+    new_attributes = @attributes.dup
+    new_attributes[:id] += 1
 
-  #   post = Post.find_by attributes
+    post posts_url, params: { post: new_attributes }
 
-  #   assert { post }
-  #   assert_redirected_to post_url(post)
-  # end
+    post = Post.find_by new_attributes
+
+    assert { post }
+    assert_redirected_to post_url(post)
+  end
 
   test 'should get edit' do
     get edit_post_path(@post)
