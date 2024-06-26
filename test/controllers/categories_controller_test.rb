@@ -10,7 +10,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     @post_three = posts(:three)
   end
 
-  test "should get all category posts" do
+  test 'should get all category posts' do
     get category_url(@category)
     assert_response :success
 

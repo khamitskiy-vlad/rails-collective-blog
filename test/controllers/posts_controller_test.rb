@@ -16,7 +16,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     }
     @user = users(:one)
   end
-  
+
   test 'should get show' do
     get post_url(@post)
     assert_response :success

@@ -8,7 +8,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
   end
-  
+
   test 'should get root' do
     get root_url
     assert_response :success
@@ -16,7 +16,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
 
   test 'user should get create new post button if authorized' do
     sign_in @user
-    
+
     get root_url
 
     assert_select 'a', 'Написать пост'
@@ -25,6 +25,6 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
   test "user shouldn't get create new post button if unauthorized" do
     get root_url
 
-    assert_select 'a', { count: 0, text: 'Написать пост'}
+    assert_select 'a', { count: 0, text: 'Написать пост' }
   end
 end
