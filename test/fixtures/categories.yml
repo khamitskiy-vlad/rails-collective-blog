@@ -2,5 +2,10 @@
 
 one:
   id: 1
-  name: MyString
-  route: MyRoute
+  name: Администрирование
+  route: administration
+
+two:
+  id: 2
+  name: Маркетинг
+  route: marketing
