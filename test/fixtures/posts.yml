@@ -3,17 +3,17 @@
 one:
   title: <%= Faker::Lorem.question %>
   body: <%= Faker::Lorem.paragraph %>
-  creator_id: 1
-  category_id: 1
+  creator: one
+  category: one
 
 two:
   title: <%= Faker::Lorem.question %>
   body: <%= Faker::Lorem.paragraph %>
-  creator_id: 1
-  category_id: 1
+  creator: one
+  category: one
 
 three:
   title: <%= Faker::Lorem.question %>
   body: <%= Faker::Lorem.paragraph %>
-  creator_id: 1
-  category_id: 2
+  creator: two
+  category: two
