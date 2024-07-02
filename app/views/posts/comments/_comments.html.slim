@@ -1,0 +1,25 @@
+- comments.each do |comment, sub_comments|
+  .card.my-3
+    .card-header.border-0
+      a.me-2 href="##{comment.id}"
+        i.bi.bi-link-45deg
+      span.me-2
+        = link_to comment.user.username, user_path(comment.user), class: 'link-dark text-decoration-none'
+      small.lh-1
+        span.fw-lighter.me-2
+          = time_ago_in_words(comment.created_at)
+        - if comment.user == current_user
+          i.bi.bi-trash3
+            = link_to 'Удалить', comment_path(comment), data: { turbo_method: :delete, turbo_confirm: 'Удалить комментарий?' }, class: 'link-secondary text-decoration-none'
+    .card-body.border-0
+      = comment.body
+    - if comments.present?
+      ul
+        = render('posts/comments/comments', comments: sub_comments)
+    - if user_signed_in?
+      .card-footer.border-0
+        a.small.text-muted data-bs-toggle='collapse' href="#response#{comment.id}"
+           | Ответить
+        .collapse data-bs-target="response#{comment.id}" id="response#{comment.id}"
+          .card.card-body
+            = render 'posts/comments/form', comment: comment.children.new, url: post_comments_path(comment.post)

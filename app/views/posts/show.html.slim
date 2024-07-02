@@ -1,4 +1,4 @@
-h1.mb-3.fw-semibold>
+.mb-3.fw-semibold>
   = link_to 'Лента', root_path, class: 'link-dark text-decoration-none'
   span.fw-lighter
     |<> /
@@ -16,5 +16,12 @@ h1.mb-3.fw-semibold>
       i.bi.bi-trash3<
         = link_to 'Удалить', @post, data: { turbo_method: :delete, confirm: 'Пост будет удален, вы уверены?' }, class: 'link-secondary text-decoration-none'
 = render @post
-div
-  = link_to 'Назад к постам', :back, class: 'text-decoration-none'
+h4.mt-3
+  | Комментарии
+= render 'posts/comments/form', comment: @comment, url: post_comments_path(@post) if current_user
+- if @comments.empty?
+  .mt-3
+    small.text-secondary
+      | Тут пока еще нет комментариев. Станьте первым!
+- else
+  = render 'posts/comments/comments', comments: @comments
