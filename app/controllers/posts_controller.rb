@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create update destroy]
   before_action :set_post, only: %i[update show destroy edit]
 
-  def show; end
+  def show
+    @comment = PostComment.new
+    @comments = @post.comments.includes(:user).arrange
+  end
 
   def new
     @post = Post.new
@@ -17,7 +21,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post), notice: 'Post created successfully'
     else
-      render :new, status: :unprocessably_entity, notice: "Post couldn't be created"
+      render :new, status: :unprocessable_entity, notice: "Post couldn't be created"
     end
   end
 
@@ -25,7 +29,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post), notice: 'Post updated successfully'
     else
-      render :edit, notice: "Post couldn't be updated"
+      render :edit, status: :unprocessable_entity, notice: "Post couldn't be updated"
     end
   end
 
@@ -40,7 +44,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.required(:post).permit(:title, :body, :creator_id, :category_id)
+    params.required(:post).permit(:title, :body, :category_id)
   end
 
   def set_post
