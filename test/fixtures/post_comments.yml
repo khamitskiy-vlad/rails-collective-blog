@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: <%= Faker::Lorem.paragraph %>
+  post: one
+  user: one
+
+two:
+  body: <%= Faker::Lorem.paragraph %>
+  post: two
+  user: two

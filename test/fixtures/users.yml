@@ -1,4 +1,7 @@
 one:
-  id: 1
+  username: <%= Faker::Name.name %>
+  email: <%= Faker::Internet.email %>
+
+two:
   username: <%= Faker::Name.name %>
   email: <%= Faker::Internet.email %>

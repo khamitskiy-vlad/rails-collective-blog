@@ -7,14 +7,13 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @post = posts(:one)
-    @attributes = {
-      id: @post.id,
-      title: Faker::Lorem.question,
-      body: Faker::Lorem.paragraph,
-      creator_id: @post.creator_id,
-      category_id: @post.category_id
-    }
     @user = users(:one)
+    @category = categories(:one)
+    @attributes = {
+      title: Faker::Lorem.question,
+      body: Faker::Lorem.paragraph_by_chars(number: 151, supplemental: false),
+      category_id: @category.id
+    }
   end
 
   test 'should get show' do
@@ -23,22 +22,20 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get new' do
-    get new_post_path
+    sign_in @user
+    get new_post_url
     assert_response :success
   end
 
   test 'should get create' do
     sign_in @user
 
-    new_attributes = @attributes.dup
-    new_attributes[:id] += 1
+    post posts_path, params: { post: @attributes }
 
-    post posts_url, params: { post: new_attributes }
+    new_post = Post.find_by(@attributes.merge(creator_id: @post.creator.id))
 
-    post = Post.find_by new_attributes
-
-    assert { post }
-    assert_redirected_to post_url(post)
+    assert { new_post }
+    assert_redirected_to post_url(new_post)
   end
 
   test 'should get edit' do
@@ -47,6 +44,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get update' do
+    sign_in @user
+
     patch post_url(@post), params: { post: @attributes }
     assert_redirected_to post_url(@post)
 
@@ -56,6 +55,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get destroy' do
+    sign_in @user
+
     delete post_url(@post)
 
     assert_redirected_to root_path

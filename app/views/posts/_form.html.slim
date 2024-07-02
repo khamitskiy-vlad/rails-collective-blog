@@ -1,5 +1,13 @@
 = simple_form_for @post do |f|
-  = f.input :title, label: 'Заголовок'
-  = f.input :body, label: 'Пост'
-  = f.association :category, collection: @categories, prompt: 'Выберите категорию'
-  = f.submit 'Опубликовать'
+  .form-group.mb-3
+    = f.input :title, required: true, label: 'Заголовок', input_html: { class: 'form-control', maxlength: 150, min: 5 }
+    small.form-text
+      | 5-150 символов
+  .form-group.mb-3
+    = f.input :body, required: true, label: 'Пост', input_html: { class: 'form-control', rows: '10', min: 150 }
+    small.form-text
+      | не менее 150 символов
+  .form-group.mb-3
+    = f.association :category, required: true, label: 'Категория', collection: @categories, prompt: 'Выберите категорию', input_html: { class: 'form-control' }
+  .form-actions.mt-3
+    = f.submit 'Опубликовать', class: 'btn btn-primary'
