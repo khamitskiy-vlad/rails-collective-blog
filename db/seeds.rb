@@ -89,13 +89,13 @@ PostComment.create!([{
                       body: 'Представь себе :)',
                       post_id: 1,
                       user_id: 2,
-                      ancestry: "/#{@parrent_comment_1.id}/"
+                      ancestry: "/#{@parrent_comment1.id}/"
                     },
                      {
                        body: 'Ничего не понятно!',
                        post_id: 2,
                        user_id: 1,
-                       ancestry: "/#{@parrent_comment_2.id}/"
+                       ancestry: "/#{@parrent_comment2.id}/"
                      }])
 
 Rails.logger.debug { "Comments was created #{PostComment.count} times" }
