@@ -16,18 +16,19 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     }
   end
 
-  test 'should get show' do
+  test 'should get show post' do
     get post_url(@post)
     assert_response :success
   end
 
-  test 'should get new' do
+  test 'should get new post' do
     sign_in @user
+
     get new_post_url
     assert_response :success
   end
 
-  test 'should get create' do
+  test 'should create post' do
     sign_in @user
 
     post posts_path, params: { post: @attributes }
@@ -38,12 +39,12 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_url(new_post)
   end
 
-  test 'should get edit' do
+  test 'should get edit post' do
     get edit_post_path(@post)
     assert_response :success
   end
 
-  test 'should get update' do
+  test 'should update post' do
     sign_in @user
 
     patch post_url(@post), params: { post: @attributes }
@@ -54,7 +55,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert { @post.title == @attributes[:title] }
   end
 
-  test 'should get destroy' do
+  test 'should destroy post' do
     sign_in @user
 
     delete post_url(@post)
