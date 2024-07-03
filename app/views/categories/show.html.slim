@@ -1,11 +1,12 @@
 .mb-3.fw-semibold>
-  = link_to 'Лента', root_path, class: 'link-dark text-decoration-none'
+  = link_to 'Лента', root_path, class: 'link-primary text-decoration-none'
   span.fw-lighter
     |<> /
   = @category.name
 .row
   .col-md-12
     .mb-3
-      =render @category
+      - @category.posts.each do |post|
+        = render 'posts/posts', post: post
 div
   = link_to 'Ко всем постам', root_path, class: 'text-decoration-none'

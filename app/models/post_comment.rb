@@ -5,5 +5,5 @@ class PostComment < ApplicationRecord
   belongs_to :user, inverse_of: :comments
   has_ancestry
 
-  validates :body, presence: true, length: { maximum: 500 }
+  validates :content, presence: true, length: { maximum: 500 }
 end

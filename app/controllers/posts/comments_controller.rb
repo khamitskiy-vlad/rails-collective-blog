@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 class Posts::CommentsController < Posts::ApplicationController
-  before_action :authenticate_user!
+  before_action :set_comment, only: :destroy
 
   def create
-    @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
     @comment.user = current_user
 
@@ -16,15 +15,20 @@ class Posts::CommentsController < Posts::ApplicationController
   end
 
   def destroy
-    @comment = PostComment.find(params[:id])
-    @comment.destroy
-
-    redirect_back(fallback_location: root_path)
+    if @comment.destroy
+      redirect_to post_path(@post), notice: 'Comment deleted successfully'
+    else
+      redirect_to post_path(@post), notice: "Comment couldn't be deleted"
+    end
   end
 
   private
 
+  def set_comment
+    @comment = @post.comments.find(params[:id])
+  end
+
   def comment_params
-    params.require(:post_comment).permit(:body, :parent_id)
+    params.require(:post_comment).permit(:content, :parent_id)
   end
 end
