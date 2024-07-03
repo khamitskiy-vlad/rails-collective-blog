@@ -1,0 +1,22 @@
+.border.rounded-3.mb-3.px-3.py-2
+          small.lh-1
+            span>
+              = link_to (post.creator.username || post.creator.email), user_path(post.creator), class: 'link-dark text-decoration-none'
+            span.fw-lighter
+              = time_ago_in_words(post.created_at)
+            p.pe-auto.mb-1
+              = link_to post.category.name, category_path(post.category), class: 'link-dark text-decoration-none'
+          h3
+            = link_to post.title.truncate(75), post_path(post), class: 'link-dark text-decoration-none'
+          .
+            span.m-0
+              = post.body.truncate(400, omission: '... ')
+              = link_to 'читать далее', post_path(post), class: 'text-decoration-none' if post.body.length > 400
+          .mt-2
+            small.text-secondary
+              small.bi.bi-chat-left.me-1
+              span
+                = post.comments.count
+              small.bi.bi-heart.ms-2.me-1
+              span
+                = post.likes.count
