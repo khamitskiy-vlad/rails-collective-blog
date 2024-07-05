@@ -19,25 +19,25 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      redirect_to post_path(@post), notice: 'Post created successfully'
+      redirect_to post_path(@post), notice: t('.success')
     else
-      render :new, status: :unprocessable_entity, notice: "Post couldn't be created"
+      render :new, status: :unprocessable_entity, notice: t('.failure')
     end
   end
 
   def update
     if @post.update(post_params)
-      redirect_to post_path(@post), notice: 'Post updated successfully'
+      redirect_to post_path(@post), notice: t('.success')
     else
-      render :edit, status: :unprocessable_entity, notice: "Post couldn't be updated"
+      render :edit, status: :unprocessable_entity, notice: t('.failure')
     end
   end
 
   def destroy
     if @post.destroy
-      redirect_to root_path, notice: 'Post deleted successfully'
+      redirect_to root_path, notice: t('.success')
     else
-      redirect_to post_path(@post), notice: "Post couldn't be deleted"
+      redirect_to post_path(@post), notice: t('.failure')
     end
   end
 

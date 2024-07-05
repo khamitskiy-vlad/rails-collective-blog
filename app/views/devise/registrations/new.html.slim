@@ -1,18 +1,18 @@
 h2
-  | Зарегистрироваться
+  = t('.title')
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = f.error_notification
   .form-inputs
     .form-group.mb-3
-      = f.input :username, label: 'Имя пользователя', required: true, autofocus: true, input_html: { class: 'form-control', autocomplete: 'username' }
+      = f.input :username, label: t('.username'), required: true, autofocus: true, input_html: { class: 'form-control', autocomplete: 'username' }
     .form-group.mb-3
       = f.input :email, required: true, autofocus: true, input_html: { class: 'form-control', autocomplete: 'email' }
     .form-group.mb-3
-      = f.input :password, label: 'Пароль', required: true, input_html: { class: 'form-control', autocomplete: 'new-password' }
+      = f.input :password, label: t('.password'), required: true, input_html: { class: 'form-control', autocomplete: 'new-password' }
       small.text-secondary
-        = "#{@minimum_password_length} символов минимум" if @minimum_password_length
+        = "#{@minimum_password_length} #{t('.symbols_min')}" if @minimum_password_length
     .form-group.mb-3
-      = f.input :password_confirmation, label: 'Подтвердить пароль', required: true, input_html: { class: 'form-control', autocomplete: 'new-password' }
+      = f.input :password_confirmation, label: t('.password_confirmation'), required: true, input_html: { class: 'form-control', autocomplete: 'new-password' }
     .form-actions.mb-3
-      = f.button :submit, 'Зарегистрироваться', class: 'btn btn-primary'
+      = f.submit t('.signup'), class: 'btn btn-primary'
 = render 'devise/shared/links'

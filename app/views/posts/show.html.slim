@@ -1,37 +1,36 @@
 .mb-3.fw-semibold>
-  = link_to 'Лента', root_path, class: 'link-primary text-decoration-none'
+  = link_to t('.feed'), root_path, class: 'link-primary text-decoration-none'
   span.fw-lighter
     |<> /
-  = link_to @post.category.name, category_path(@post.category), class: 'link-primary text-decoration-none'
+  = link_to @category, category_path(@post.category), class: 'link-primary text-decoration-none'
   span.fw-lighter
     |<> /
-  | Пост
+  = t('.post')
 .mb-3
   small.lh-1
     span> = link_to (@post.creator.username || @post.creator.email), user_path(@post.creator), class: 'link-dark text-decoration-none'
-    span.fw-lighter = time_ago_in_words(@post.created_at)
+    span.fw-lighter.me-2 = time_ago_in_words(@post.created_at)
     - if user_signed_in? && current_user.posts.include?(@post)
-      i.bi.bi-pencil-square<
-        = link_to 'Редактировать', edit_post_path(@post), class: 'link-dark text-decoration-none'
-      i.bi.bi-trash3<
-        = link_to 'Удалить', @post, data: { turbo_method: :delete, confirm: 'Пост будет удален, вы уверены?' }, class: 'link-secondary text-decoration-none'
+      = link_to t('.edit'), edit_post_path(@post), class: 'link-dark text-decoration-none bi bi-pencil-square'
+      =< link_to t('.destroy'), @post, data: { turbo_method: :delete, turbo_confirm: t('.confirm') }, class: 'link-secondary text-decoration-none bi bi-trash3'
 = render @post
 - if user_signed_in?
   = render 'posts/likes/like', post: @post
 - else
   span.bi.bi-heart.text-secondary
-    |< Нравится
+    |<
+      = t('.like')
 span.text-primary.ms-2
   = @post.likes.count
 .fs-4.mt-3
   span
-    | Комментарии
+    = t('.comments')
   span.text-primary.ms-2
     = @post.comments.count
 = render 'posts/comments/form', comment: @comment, url: post_comments_path(@post) if current_user
 - if @comments.empty?
   .mt-3
     small.text-secondary
-      | Тут пока еще нет комментариев. Станьте первым!
+      = t('.non_comments')
 - else
   = render 'posts/comments/comments', comments: @comments

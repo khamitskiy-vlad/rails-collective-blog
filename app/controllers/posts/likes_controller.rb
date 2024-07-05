@@ -5,7 +5,7 @@ class Posts::LikesController < Posts::ApplicationController
 
   def create
     if already_liked?
-      flash[:notice] = "You can't like more than once"
+      flash[:notice] = t('.failure')
     else
       @post.likes.create(user_id: current_user.id)
     end
@@ -16,7 +16,7 @@ class Posts::LikesController < Posts::ApplicationController
     if already_liked?
       @like.destroy
     else
-      flash[:notice] = 'Cannot unlike'
+      flash[:notice] = t('.failure')
     end
     redirect_to post_path(@post)
   end

@@ -1,5 +1,5 @@
 - pre_like = post.likes.find { |like| like.user_id == current_user.id }
 - if pre_like
-  = link_to ' Нравится', post_like_path(post, pre_like), data: { turbo_method: :delete }, class: 'bi bi-heart-fill link-dark text-decoration-none'
+  = link_to " #{t('.unlike')}", post_like_path(post, pre_like), data: { turbo_method: :delete }, class: 'bi bi-heart-fill link-dark text-decoration-none'
 - else
-  = link_to ' Нравится', post_likes_path(post), data: { turbo_method: :post }, class: 'bi bi-heart link-secondary text-decoration-none'
+  = link_to " #{t('.like')}", post_likes_path(post), data: { turbo_method: :post }, class: 'bi bi-heart link-secondary text-decoration-none'
