@@ -8,10 +8,11 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     @post_one = posts(:one)
     @post_two = posts(:two)
     @post_three = posts(:three)
+    @locale = { locale: I18n.default_locale }
   end
 
   test 'should get all category posts' do
-    get category_url(@category)
+    get category_url(@category, @locale)
     assert_response :success
 
     assert_select 'a', @post_one.title
