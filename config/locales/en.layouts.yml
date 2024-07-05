@@ -1,0 +1,13 @@
+en:
+  layouts:
+    application:
+      title: DigiBash
+      hexlet_title: © Hexlet, 2024
+    shared:
+      nav:
+        site_name: Digibash
+        categories: Categories
+        new_post: New Post
+        signout: Sign Out
+        signin: Sign In
+        signup: Sign Up

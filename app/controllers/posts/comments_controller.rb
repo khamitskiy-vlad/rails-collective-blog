@@ -8,17 +8,17 @@ class Posts::CommentsController < Posts::ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_to post_path(@post), notice: 'Comment was successfully created.'
+      redirect_to post_path(@post), notice: t('.success')
     else
-      redirect_to post_path(@post), status: :unprocessable_entity, notice: 'Comment has not been added'
+      redirect_to post_path(@post), status: :unprocessable_entity, notice: t('.failure')
     end
   end
 
   def destroy
     if @comment.destroy
-      redirect_to post_path(@post), notice: 'Comment deleted successfully'
+      redirect_to post_path(@post), notice: t('.success')
     else
-      redirect_to post_path(@post), notice: "Comment couldn't be deleted"
+      redirect_to post_path(@post), notice: t('.failure')
     end
   end
 

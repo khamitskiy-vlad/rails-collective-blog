@@ -1,13 +1,13 @@
 = simple_form_for @post do |f|
   .form-group.mb-3
-    = f.input :title, required: true, label: 'Заголовок', input_html: { class: 'form-control', maxlength: 150, min: 5 }
+    = f.input :title, required: true, label: t('.title'), input_html: { class: 'form-control', maxlength: 150, min: 5 }
     small.form-text
-      | 5-150 символов
+      = t('.title_symbols')
   .form-group.mb-3
-    = f.input :body, required: true, label: 'Пост', input_html: { class: 'form-control', rows: '10', min: 150 }
+    = f.input :body, required: true, label: t('.body'), input_html: { class: 'form-control', rows: '10', min: 150 }
     small.form-text
-      | не менее 150 символов
+      = t('.body_symbols')
   .form-group.mb-3
-    = f.association :category, required: true, label: 'Категория', collection: @categories, prompt: 'Выберите категорию', input_html: { class: 'form-control' }
+    = f.association :category, required: true, label: t('.category'), collection: @categories, prompt: t('.select_category'), input_html: { class: 'form-control' }
   .form-actions.mt-3
-    = f.submit 'Опубликовать', class: 'btn btn-primary'
+    = f.submit t('.publish'), class: 'btn btn-primary'

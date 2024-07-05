@@ -2,7 +2,7 @@ h2.mb-3
   = @user.username || @user.email
 .fs-3.mb-2
   span
-    | Публикации
+    = t('.publications')
   span.text-primary.ms-2
     = @user.posts.count
 - @user.posts.order(created_at: :desc).each do |post|
@@ -15,7 +15,7 @@ h2.mb-3
         = time_ago_in_words(post.created_at)
 .fs-3.mt-3.mb-2
   span
-    | Комментарии
+    = t('.comments')
   span.text-primary.ms-2
     = @user.comments.count
 - @user.comments.order(created_at: :desc).each do |comment|

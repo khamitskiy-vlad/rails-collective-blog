@@ -1,0 +1,5 @@
+en:
+  users:
+    show:
+      publications: Posts
+      comments: Comments
