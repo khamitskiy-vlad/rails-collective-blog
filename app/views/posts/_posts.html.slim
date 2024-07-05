@@ -5,13 +5,13 @@
             span.fw-lighter
               = time_ago_in_words(post.created_at)
             p.pe-auto.mb-1
-              = link_to post.category.name, category_path(post.category), class: 'link-dark text-decoration-none'
-          h3
+              = link_to locale_category_from(post), category_path(post.category), class: 'link-dark text-decoration-none'
+          h3.text-break
             = link_to post.title.truncate(75), post_path(post), class: 'link-dark text-decoration-none'
           .
-            span.m-0
+            span.m-0.text-break
               = post.body.truncate(400, omission: '... ')
-              = link_to 'читать далее', post_path(post), class: 'text-decoration-none' if post.body.length > 400
+              = link_to t('.read'), post_path(post), class: 'text-decoration-none' if post.body.length > 400
           .mt-2
             small.text-secondary
               small.bi.bi-chat-left.me-1
