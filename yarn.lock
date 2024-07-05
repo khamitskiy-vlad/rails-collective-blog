@@ -375,11 +375,6 @@ fill-range@^7.1.1:
   dependencies:
     to-regex-range "^5.0.1"
 
-flag-icons@^7.2.3:
-  version "7.2.3"
-  resolved "https://registry.npmjs.org/flag-icons/-/flag-icons-7.2.3.tgz"
-  integrity sha512-X2gUdteNuqdNqob2KKTJTS+ZCvyWeLCtDz9Ty8uJP17Y4o82Y+U/Vd4JNrdwTAjagYsRznOn9DZ+E/Q52qbmqg==
-
 fraction.js@^4.3.7:
   version "4.3.7"
   resolved "https://registry.npmjs.org/fraction.js/-/fraction.js-4.3.7.tgz"
