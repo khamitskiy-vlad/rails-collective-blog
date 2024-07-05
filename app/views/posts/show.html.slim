@@ -2,7 +2,7 @@
   = link_to t('.feed'), root_path, class: 'link-primary text-decoration-none'
   span.fw-lighter
     |<> /
-  = link_to @category, category_path(@post.category), class: 'link-primary text-decoration-none'
+  = link_to locale_category_from(@post), category_path(@post.category), class: 'link-primary text-decoration-none'
   span.fw-lighter
     |<> /
   = t('.post')
