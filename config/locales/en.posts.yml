@@ -14,7 +14,7 @@ en:
       non_comments: There are no comments here yet. Be the first!
 
     new:
-      title: Новый пост
+      title: New Post
 
     create:
       success: Post was created
