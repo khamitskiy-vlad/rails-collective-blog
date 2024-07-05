@@ -1,0 +1,69 @@
+en:
+  posts:
+    edit:
+      title: Editing post
+
+    show:
+      feed: Feed
+      post: Post
+      edit: Edit
+      destroy: Delete
+      confirm: Post will be deleted, are you sure?
+      like: Likes
+      comments: Comments
+      non_comments: There are no comments here yet. Be the first!
+
+    new:
+      title: Новый пост
+
+    create:
+      success: Post was created
+      failure: Post wasn't be created
+
+    update:
+      success: Post was updated
+      failure: Post wasn't be updated
+
+    destroy:
+      success: Post was destroyed
+      failure: Post wasn't be destroyed
+    
+    posts:
+      read: read more
+    
+    form:
+      publish: Publish
+      title_symbols: 5-150 symbols
+      body_symbols: at least 150 characters
+      title: Title
+      body: Body
+      category: Category
+      select_category: Select a category
+
+    comments:
+      comments:
+        destroy: Delete
+        confirm: Delete comment?
+        reply: Reply
+
+      form:
+        publish: Publish
+      
+      create:
+        success: Comment was created
+        failure: Comment wasn't be created
+      
+      destroy:
+        success: Comment was destroyed
+        failure: Comment wasn't be destroyed
+    
+    likes:
+      like:
+        like: Like
+        unlike: Like
+      
+      create:
+        failure: You cannot like more than once
+      
+      destroy:
+        failure: You can't unlike

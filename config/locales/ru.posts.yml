@@ -1,0 +1,69 @@
+ru:
+  posts:
+    edit:
+      title: Редактировать пост
+
+    show:
+      feed: Лента
+      post: Пост
+      edit: Редактировать
+      destroy: Удалить
+      confirm: Пост будет удален, вы уверены?
+      like: Нравится
+      comments: Комментарии
+      non_comments: Тут пока еще нет комментариев. Станьте первым!
+    
+    new:
+      title: Новый пост
+
+    create:
+      success: Пост успешно опубликован
+      failure: Пост не может быть опубликован
+
+    update:
+      success: Пост успешно обновлен
+      failure: Пост не может быть обновлен
+
+    destroy:
+      success: Пост успешно удален
+      failure: Пост не может быть удален
+    
+    posts:
+      read: читать далее
+    
+    form:
+      publish: Опубликовать
+      title: Заголовок
+      body: Пост
+      category: Категория
+      title_symbols: 5-150 символов
+      body_symbols: не менее 150 символов
+      select_category: Выберите категорию
+
+    comments:
+      comments:
+        destroy: Удалить
+        confirm: Удалить комментарий?
+        reply: Ответить
+
+      form:
+        publish: Опубликовать
+      
+      create:
+        success: Комментарий успешно опубликован
+        failure: Комментарий не может быть опубликован
+      
+      destroy:
+        success: Комментарий успешно удален
+        failure: Комментарий не может быть удален
+    
+    likes:
+      like:
+        like: Нравится
+        unlike: Нравится
+      
+      create:
+        failure: Вы не можете поставить отметку Нравится больше одного раза
+      
+      destroy:
+        failure: Вы не можете снять отметку Нравится

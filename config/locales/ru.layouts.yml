@@ -1,0 +1,13 @@
+ru:
+  layouts:
+    application:
+      title: ДигиБаш
+      hexlet_title: © Хекслет, 2024
+    shared:
+      nav:
+        site_name: ДигиБаш
+        categories: Категории
+        new_post: Написать пост
+        signout: Выйти
+        signin: Войти
+        signup: Зарегистрироваться
