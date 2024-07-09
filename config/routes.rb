@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   root 'home#index'
-  
+
   resources :categories, only: :show
 
   resources :posts, except: :index do
