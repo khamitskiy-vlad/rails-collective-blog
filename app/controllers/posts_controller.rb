@@ -10,10 +10,20 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    if user_signed_in?
+      @post = Post.new
+    else
+      redirect_to root_path, notice: t('.failure')
+    end
   end
 
-  def edit; end
+  def edit
+    if user_pass_check?
+      @post
+    else
+      redirect_to post_path(@post), notice: t('.failure')
+    end
+  end
 
   def create
     @post = current_user.posts.build(post_params)
@@ -26,7 +36,8 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
+    if user_pass_check?
+      @post.update(post_params)
       redirect_to post_path(@post), notice: t('.success')
     else
       render :edit, status: :unprocessable_entity, notice: t('.failure')
@@ -34,7 +45,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    if @post.destroy
+    if user_pass_check?
+      @post.destroy
       redirect_to root_path, notice: t('.success')
     else
       redirect_to post_path(@post), notice: t('.failure')
@@ -42,6 +54,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def user_pass_check?
+    @post.creator == current_user
+  end
 
   def post_params
     params.required(:post).permit(:title, :body, :category_id)
