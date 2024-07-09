@@ -1,31 +1,33 @@
 # frozen_string_literal: true
 
 class Posts::CommentsController < Posts::ApplicationController
+  before_action :authenticate_user!
   before_action :set_comment, only: :destroy
 
   def create
-    @comment = @post.comments.build(comment_params)
+    @comment = resource_post.comments.build(comment_params)
     @comment.user = current_user
 
     if @comment.save
-      redirect_to post_path(@post), notice: t('.success')
+      redirect_to post_path(resource_post), notice: t('.success')
     else
-      redirect_to post_path(@post), status: :unprocessable_entity, notice: t('.failure')
+      redirect_to post_path(resource_post), status: :unprocessable_entity, notice: t('.failure')
     end
   end
 
   def destroy
-    if @comment.destroy
-      redirect_to post_path(@post), notice: t('.success')
+    if @comment.user == current_user
+      @comment.destroy
+      redirect_to post_path(resource_post), notice: t('.success')
     else
-      redirect_to post_path(@post), notice: t('.failure')
+      redirect_to post_path(resource_post), notice: t('.failure')
     end
   end
 
   private
 
   def set_comment
-    @comment = @post.comments.find(params[:id])
+    @comment = resource_post.comments.find(params[:id])
   end
 
   def comment_params

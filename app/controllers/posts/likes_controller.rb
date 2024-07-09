@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 class Posts::LikesController < Posts::ApplicationController
+  before_action :authenticate_user!
   before_action :set_like, only: :destroy
 
   def create
     if already_liked?
       flash[:notice] = t('.failure')
     else
-      @post.likes.create(user_id: current_user.id)
+      resource_post.likes.create(user_id: current_user.id)
     end
-    redirect_to post_path(@post)
+    redirect_to post_path(resource_post)
   end
 
   def destroy
@@ -18,13 +19,13 @@ class Posts::LikesController < Posts::ApplicationController
     else
       flash[:notice] = t('.failure')
     end
-    redirect_to post_path(@post)
+    redirect_to post_path(resource_post)
   end
 
   private
 
   def set_like
-    @like = @post.likes.find(params[:id])
+    @like = resource_post.likes.find(params[:id])
   end
 
   def already_liked?

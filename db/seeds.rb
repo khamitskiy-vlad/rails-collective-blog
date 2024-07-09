@@ -73,26 +73,26 @@
 # Rails.logger.debug { "Post was created #{Post.count} times" }
 
 # @parrent_comment1 = PostComment.create!({
-#                                           body: 'Вау! Никогда бы не подумал!',
+#                                           content: 'Вау! Никогда бы не подумал!',
 #                                           post_id: 1,
 #                                           user_id: 1,
 #                                           ancestry: '/'
 #                                         })
 
 # @parrent_comment2 = PostComment.create!({
-#                                           body: 'Rfr gthtrk.xbnm hfccrkflre yf vfr,ert&',
+#                                           content: 'Rfr gthtrk.xbnm hfccrkflre yf vfr,ert&',
 #                                           post_id: 2,
 #                                           user_id: 2,
 #                                           ancestry: '/'
 #                                         })
 # PostComment.create!([{
-#                       body: 'Представь себе :)',
+#                       content: 'Представь себе :)',
 #                       post_id: 1,
 #                       user_id: 2,
 #                       ancestry: "/#{@parrent_comment1.id}/"
 #                     },
 #                      {
-#                        body: 'Ничего не понятно!',
+#                        content: 'Ничего не понятно!',
 #                        post_id: 2,
 #                        user_id: 1,
 #                        ancestry: "/#{@parrent_comment2.id}/"

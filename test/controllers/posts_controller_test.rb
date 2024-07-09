@@ -41,6 +41,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get edit post' do
+    sign_in @user
     get edit_post_path(@post, @locale)
     assert_response :success
   end

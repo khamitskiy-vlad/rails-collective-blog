@@ -2,8 +2,6 @@
 
 one:
   name: Администрирование
-  route: administration
 
 two:
   name: Маркетинг
-  route: marketing

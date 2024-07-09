@@ -13,12 +13,8 @@
                   = t('.categories')
                 ul.dropdown-menu[aria-labelledby='navbarDropdown']
                   - @categories.each do |category|
-                    - if I18n.locale == I18n.default_locale
-                      li
-                        = link_to category.name, category_path(category), class: 'dropdown-item'
-                    - else
-                      li
-                        = link_to category.route.capitalize, category_path(category), class: 'dropdown-item'
+                    li
+                      = link_to category.name, category_path(category), class: 'dropdown-item'
           - if user_signed_in?
             .container-fluid.p-0
               ul.nav.nav-pills

@@ -2,7 +2,7 @@
   = link_to t('.feed'), root_path, class: 'link-primary text-decoration-none'
   span.fw-lighter
     |<> /
-  = link_to locale_category_from(@post), category_path(@post.category), class: 'link-primary text-decoration-none'
+  = link_to @post.category.name, category_path(@post.category), class: 'link-primary text-decoration-none'
   span.fw-lighter
     |<> /
   = t('.post')
@@ -19,7 +19,7 @@
 - else
   span.bi.bi-heart.text-secondary
     |<
-      = t('.like')
+    = t('.like')
 span.text-primary.ms-2
   = @post.likes.count
 .fs-4.mt-3

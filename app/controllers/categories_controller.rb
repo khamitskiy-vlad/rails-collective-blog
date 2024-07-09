@@ -8,6 +8,6 @@ class CategoriesController < ApplicationController
   private
 
   def set_category
-    @category = Category.find_by(route: params[:route])
+    @category = Category.find(params[:id])
   end
 end

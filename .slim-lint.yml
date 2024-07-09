@@ -6,13 +6,13 @@ exclude:
 
 linters:
   LineLength:
-    max: 1000
+    max: 180
   
   RuboCop:
     enabled: true
     ignored_cops:
-      - Style/HashSyntax
       - Layout/TrailingEmptyLines
+      - Layout/HashAlignment
       - Style/FrozenStringLiteralComment
       - Layout/IndentationWidth
       - Lint/Void
