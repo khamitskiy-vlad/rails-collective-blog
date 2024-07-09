@@ -7,6 +7,6 @@
   .col-md-12
     .mb-3
       - @category.posts.each do |post|
-        = render 'posts/posts', post: post
+        = render 'posts/posts', post:
 div
   = link_to t('.back'), root_path, class: 'text-decoration-none'

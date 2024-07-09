@@ -10,7 +10,8 @@
           = time_ago_in_words(comment.created_at)
         - if comment.user == current_user
           i.bi.bi-trash3
-            = link_to t('.destroy'), post_comment_path(comment.post, comment), data: { turbo_method: :delete, turbo_confirm: t('.confirm') }, class: 'link-secondary text-decoration-none'
+            = link_to t('.destroy'), post_comment_path(comment.post, comment), data: { turbo_method: :delete, turbo_confirm: t('.confirm') },
+              class: 'link-secondary text-decoration-none'
     .card-body.border-0
       = comment.content
     - if comments.present?
