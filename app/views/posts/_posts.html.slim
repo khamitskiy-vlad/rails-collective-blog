@@ -5,7 +5,7 @@
             span.fw-lighter
               = time_ago_in_words(post.created_at)
             p.pe-auto.mb-1
-              = link_to locale_category_from(post), category_path(post.category), class: 'link-dark text-decoration-none'
+              = link_to post.category.name, category_path(post.category), class: 'link-dark text-decoration-none'
           h3.text-break
             = link_to post.title.truncate(75), post_path(post), class: 'link-dark text-decoration-none'
           .

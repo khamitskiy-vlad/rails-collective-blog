@@ -2,7 +2,7 @@
   = link_to t('.feed'), root_path, class: 'link-primary text-decoration-none'
   span.fw-lighter
     |<> /
-  = locale(@category)
+  = @category.name
 .row
   .col-md-12
     .mb-3
