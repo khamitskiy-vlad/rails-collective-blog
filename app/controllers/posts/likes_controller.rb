@@ -9,7 +9,7 @@ class Posts::LikesController < Posts::ApplicationController
     else
       flash[:notice] = t('.failure')
     end
-    redirect_to post_path(resource_post)
+    redirect_to resource_post
   end
 
   def destroy
@@ -20,7 +20,7 @@ class Posts::LikesController < Posts::ApplicationController
     else
       flash[:notice] = t('.failure')
     end
-    redirect_to post_path(resource_post)
+    redirect_to resource_post
   end
 
   private
