@@ -59,7 +59,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_14_161245) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "username", null: false
+    t.string "username"
     t.integer "likes_count"
     t.integer "comments_count"
     t.index ["email"], name: "index_users_on_email", unique: true
