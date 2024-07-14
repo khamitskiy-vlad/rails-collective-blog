@@ -1,4 +1,4 @@
-- pre_like = post.likes.find { |like| like.user_id == current_user.id }
+- pre_like = likes.find_by(user_id: current_user.id)
 - if pre_like
   = link_to " #{t('.unlike')}", post_like_path(post, pre_like), data: { turbo_method: :delete }, class: 'bi bi-heart-fill link-dark text-decoration-none'
 - else

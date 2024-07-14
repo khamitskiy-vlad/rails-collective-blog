@@ -4,7 +4,7 @@
       a.me-2 href="##{comment.id}"
         i.bi.bi-link-45deg
       span.me-2
-        = link_to comment.user.username, user_path(comment.user), class: 'link-dark text-decoration-none'
+        = link_to comment.user.email, user_path(comment.user), class: 'link-dark text-decoration-none'
       small.lh-1
         span.fw-lighter.me-2
           = time_ago_in_words(comment.created_at)
@@ -14,7 +14,7 @@
               class: 'link-secondary text-decoration-none'
     .card-body.border-0
       = comment.content
-    - if comments.present?
+    - if sub_comments.present?
       ul
         = render('posts/comments/comments', comments: sub_comments)
     - if user_signed_in?

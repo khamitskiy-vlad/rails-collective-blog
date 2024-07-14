@@ -2,31 +2,31 @@
   = link_to t('.feed'), root_path, class: 'link-primary text-decoration-none'
   span.fw-lighter
     |<> /
-  = link_to @post.category.name, category_path(@post.category), class: 'link-primary text-decoration-none'
+  = link_to @category.name, category_path(@category), class: 'link-primary text-decoration-none'
   span.fw-lighter
     |<> /
   = t('.post')
 .mb-3
   small.lh-1
-    span> = link_to (@post.creator.username || @post.creator.email), user_path(@post.creator), class: 'link-dark text-decoration-none'
+    span> = link_to @creator.email, user_path(@creator), class: 'link-dark text-decoration-none'
     span.fw-lighter.me-2 = time_ago_in_words(@post.created_at)
-    - if user_signed_in? && current_user.posts.include?(@post)
+    - if current_user == @creator
       = link_to t('.edit'), edit_post_path(@post), class: 'link-dark text-decoration-none bi bi-pencil-square'
       =< link_to t('.destroy'), @post, data: { turbo_method: :delete, turbo_confirm: t('.confirm') }, class: 'link-secondary text-decoration-none bi bi-trash3'
 = render @post
 - if user_signed_in?
-  = render 'posts/likes/like', post: @post
+  = render 'posts/likes/like', post: @post, likes: @likes
 - else
   span.bi.bi-heart.text-secondary
     |<
     = t('.like')
 span.text-primary.ms-2
-  = @post.likes.count
+  = @likes.size
 .fs-4.mt-3
   span
     = t('.comments')
   span.text-primary.ms-2
-    = @post.comments.count
+    = @comments_count
 = render 'posts/comments/form', comment: @comment, url: post_comments_path(@post) if current_user
 - if @comments.empty?
   .mt-3

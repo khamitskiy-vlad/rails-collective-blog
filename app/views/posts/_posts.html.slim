@@ -1,7 +1,7 @@
 .border.rounded-3.mb-3.px-3.py-2
           small.lh-1
             span>
-              = link_to (post.creator.username || post.creator.email), user_path(post.creator), class: 'link-dark text-decoration-none'
+              = link_to post.creator.email, user_path(post.creator), class: 'link-dark text-decoration-none'
             span.fw-lighter
               = time_ago_in_words(post.created_at)
             p.pe-auto.mb-1

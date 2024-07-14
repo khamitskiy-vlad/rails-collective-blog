@@ -2,34 +2,39 @@
 
 class Posts::LikesController < Posts::ApplicationController
   before_action :authenticate_user!
-  before_action :set_like, only: :destroy
 
   def create
-    if already_liked?
-      flash[:notice] = t('.failure')
-    else
+    if like_does_not_exist?
       resource_post.likes.create(user_id: current_user.id)
+    else
+      flash[:notice] = t('.failure')
     end
-    redirect_to post_path(resource_post)
+    redirect_to resource_post
   end
 
   def destroy
-    if already_liked?
+    @like = set_like
+
+    if user_verified?
       @like.destroy
     else
       flash[:notice] = t('.failure')
     end
-    redirect_to post_path(resource_post)
+    redirect_to resource_post
   end
 
   private
 
   def set_like
-    @like = resource_post.likes.find(params[:id])
+    resource_post.likes.find(params[:id])
   end
 
-  def already_liked?
-    PostLike.exists?(user_id: current_user.id,
-                     post_id: params[:post_id])
+  def like_does_not_exist?
+    !PostLike.exists?(user_id: current_user.id,
+                      post_id: resource_post.id)
+  end
+
+  def user_verified?
+    current_user == @like.user
   end
 end
