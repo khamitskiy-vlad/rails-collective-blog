@@ -2,7 +2,6 @@
 
 class Posts::CommentsController < Posts::ApplicationController
   before_action :authenticate_user!
-  before_action :set_comment, only: :destroy
 
   def create
     @comment = resource_post.comments.build(comment_params)
@@ -16,7 +15,9 @@ class Posts::CommentsController < Posts::ApplicationController
   end
 
   def destroy
-    if @comment.user == current_user
+    @comment = set_comment
+
+    if user_verified?
       @comment.destroy
       redirect_to post_path(resource_post), notice: t('.success')
     else
@@ -27,7 +28,11 @@ class Posts::CommentsController < Posts::ApplicationController
   private
 
   def set_comment
-    @comment = resource_post.comments.find(params[:id])
+    resource_post.comments.find(params[:id])
+  end
+
+  def user_verified?
+    current_user == @comment.user
   end
 
   def comment_params
