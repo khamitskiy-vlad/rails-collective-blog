@@ -31,10 +31,10 @@ class Posts::LikesController < Posts::ApplicationController
 
   def like_does_not_exist?
     !PostLike.exists?(user_id: current_user.id,
-                     post_id: resource_post.id)
+                      post_id: resource_post.id)
   end
 
   def user_verified?
     current_user == @like.user
-  end 
+  end
 end
