@@ -4,7 +4,7 @@ h2
   = f.error_notification
   .form-inputs
     .form-group.mb-3
-      = f.input :username, label: t('.username'), required: true, autofocus: true, input_html: { class: 'form-control', autocomplete: 'username' }
+      = f.input :username, label: t('.username'), required: false, autofocus: true, input_html: { class: 'form-control', autocomplete: 'username' }
     .form-group.mb-3
       = f.input :email, required: true, autofocus: true, input_html: { class: 'form-control', autocomplete: 'email' }
     .form-group.mb-3

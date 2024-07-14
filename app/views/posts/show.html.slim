@@ -8,7 +8,7 @@
   = t('.post')
 .mb-3
   small.lh-1
-    span> = link_to @creator.username, user_path(@creator), class: 'link-dark text-decoration-none'
+    span> = link_to @creator.email, user_path(@creator), class: 'link-dark text-decoration-none'
     span.fw-lighter.me-2 = time_ago_in_words(@post.created_at)
     - if current_user == @creator
       = link_to t('.edit'), edit_post_path(@post), class: 'link-dark text-decoration-none bi bi-pencil-square'

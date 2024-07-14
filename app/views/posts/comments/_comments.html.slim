@@ -4,7 +4,7 @@
       a.me-2 href="##{comment.id}"
         i.bi.bi-link-45deg
       span.me-2
-        = link_to comment.user.username, user_path(comment.user), class: 'link-dark text-decoration-none'
+        = link_to comment.user.email, user_path(comment.user), class: 'link-dark text-decoration-none'
       small.lh-1
         span.fw-lighter.me-2
           = time_ago_in_words(comment.created_at)
