@@ -7,6 +7,9 @@ class PostsController < ApplicationController
     @post = set_post
     @comment = PostComment.new
     @comments = @post.comments.includes(:user).arrange
+    @likes = @post.likes
+    @category = @post.category
+    @creator = @post.creator
   end
 
   def new

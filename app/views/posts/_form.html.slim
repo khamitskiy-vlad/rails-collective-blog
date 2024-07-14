@@ -1,4 +1,4 @@
-= simple_form_for @post do |f|
+= simple_form_for post do |f|
   .form-group.mb-3
     = f.input :title, required: true, label: t('.title'), input_html: { class: 'form-control', maxlength: 150, min: 5 }
     small.form-text
@@ -8,6 +8,6 @@
     small.form-text
       = t('.body_symbols')
   .form-group.mb-3
-    = f.association :category, required: true, label: t('.category'), collection: @categories, prompt: t('.select_category'), input_html: { class: 'form-control' }
+    = f.association :category, required: true, label: t('.category'), collection: categories, prompt: t('.select_category'), input_html: { class: 'form-control' }
   .form-actions.mt-3
     = f.submit t('.publish'), class: 'btn btn-primary'
