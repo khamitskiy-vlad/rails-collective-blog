@@ -2,10 +2,11 @@
       .d-flex.flex-wrap.align-items-center.py-2.border-bottom
         .navbar.navbar-expand-md.navbar-light.me-auto
           .container-fluid.p-0
-            a.navbar-brand.me-md-4[href='/']
-              img[width='20' src='/digibash_logo.png']
-              text.fw-semibold.me-1<
-                = t('.site_name')
+            .navbar-brand.me-md-4
+              = link_to root_path, class: 'text-decoration-none' do 
+                = image_tag('/digibash_logo.png', width: '20')
+                text.fw-semibold.link-dark.ms-1
+                  = t('.site_name')
           .container-fluid.p-0
             ul.navbar-nav.me-auto.mb-2.mb-md-0
               li.nav-item.dropdown
@@ -23,14 +24,11 @@
         ul.nav.nav-pills
           - if user_signed_in?
             li.nav-item.me-2
-              = link_to (current_user.username || current_user.email), user_path(current_user), class: 'nav-link link-dark'
+              = link_to current_user.username, user_path(current_user), class: 'nav-link link-dark'
             li.nav-item.me-0
-              a.nav-link.link-secondary.pe-0[href='/users/sign_out' data-turbo-method='delete']
-                = t('.signout')
+              = link_to t('.signout'), destroy_session_path(resource_name), data: { turbo_method: 'delete' }, class: 'nav-link link-secondary pe-0'
           - else
             li.nav-item.me-2
-              a.nav-link.link-dark[href='/users/sign_in/']
-                = t('.signin')
+              = link_to t('.signin'), new_session_path(resource_name), class: 'link-dark nav-link'
             li.nav-item.me-0
-              a.nav-link.link-secondary.pe-0[href='/users/sign_up/']
-                = t('.signup')
+              = link_to t('.signup'), new_registration_path(resource_name), class: 'link-secondary pe-0 nav-link'
