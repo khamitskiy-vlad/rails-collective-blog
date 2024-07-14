@@ -2,8 +2,8 @@
 
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
-    @posts = @user.posts
-    @comments = @user.comments
+    @user = User.find_by(id: params[:id])
+    @posts = @user.posts.includes(:creator)
+    @comments = @user.comments.includes(:user, :post)
   end
 end
