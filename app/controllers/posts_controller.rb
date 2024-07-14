@@ -6,7 +6,8 @@ class PostsController < ApplicationController
   def show
     @post = set_post
     @comment = PostComment.new
-    @comments = @post.comments.includes(:user).arrange
+    @comments = @post.comments.includes(:user, :post).arrange
+    @comments_count = @post.comments.size
     @likes = @post.likes
     @category = @post.category
     @creator = @post.creator
@@ -61,7 +62,7 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    Post.find(params[:id])
+    Post.find_by(id: params[:id])
   end
 
   def user_verified?

@@ -21,12 +21,12 @@
     |<
     = t('.like')
 span.text-primary.ms-2
-  = @likes.count
+  = @likes.size
 .fs-4.mt-3
   span
     = t('.comments')
   span.text-primary.ms-2
-    = @post.comments.count
+    = @comments_count
 = render 'posts/comments/form', comment: @comment, url: post_comments_path(@post) if current_user
 - if @comments.empty?
   .mt-3
