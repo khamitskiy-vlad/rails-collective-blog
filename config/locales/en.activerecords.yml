@@ -1,0 +1,18 @@
+en:
+  activerecord:
+    models:
+      post: Post
+      post/comment: Comment
+      category: Category
+      user: User
+    attributes:
+      post:
+        title: Title
+        body: Post
+        category: Category
+      post/comment:
+        body: Content
+      user:
+        username: Username
+        password: Password
+        password_confirmation: Entered password
