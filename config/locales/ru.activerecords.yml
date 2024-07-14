@@ -3,18 +3,16 @@ ru:
     models:
       post: Пост
       post/comment: Комментарий
+      category: Категория
+      user: Пользователь
     attributes:
       post:
-        title: Название
-        body: Содержание
+        title: Заголовок
+        body: Пост
+        category: Категория
       post/comment:
         body: Содержание
-
-    errors:
-      models:
-        post:
-          attributes:
-            title:
-              blank: Должно быть заполнено
-            body:
-              blank: Должно быть заполнено
+      user:
+        username: Имя пользователя
+        password: Пароль
+        password_confirmation: Введенный пароль
