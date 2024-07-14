@@ -14,7 +14,7 @@
               class: 'link-secondary text-decoration-none'
     .card-body.border-0
       = comment.content
-    - if comments.present?
+    - if sub_comments.present?
       ul
         = render('posts/comments/comments', comments: sub_comments)
     - if user_signed_in?
