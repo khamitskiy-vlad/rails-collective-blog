@@ -1,11 +1,11 @@
 h2.mb-3
-  = @user.username || @user.email
+  = @user.username
 .fs-3.mb-2
   span
     = t('.publications')
   span.text-primary.ms-2
-    = @user.posts.count
-- @user.posts.order(created_at: :desc).each do |post|
+    = @posts.count
+- @posts.order(created_at: :desc).each do |post|
   .
     = link_to post.title, post_path(post), class: 'text-decoration-none'
     small
@@ -17,8 +17,8 @@ h2.mb-3
   span
     = t('.comments')
   span.text-primary.ms-2
-    = @user.comments.count
-- @user.comments.order(created_at: :desc).each do |comment|
+    = @comments.count
+- @comments.order(created_at: :desc).each do |comment|
   .card.my-3
     .card-header.border-0.py-1
       = link_to comment.post.title, post_path(comment.post), class: 'text-decoration-none'
