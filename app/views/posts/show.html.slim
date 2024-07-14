@@ -26,7 +26,7 @@ span.text-primary.ms-2
   span
     = t('.comments')
   span.text-primary.ms-2
-    = @comments.count
+    = @post.comments.count
 = render 'posts/comments/form', comment: @comment, url: post_comments_path(@post) if current_user
 - if @comments.empty?
   .mt-3
