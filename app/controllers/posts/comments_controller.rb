@@ -8,9 +8,10 @@ class Posts::CommentsController < Posts::ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_to post_path(resource_post), notice: t('.success')
+      redirect_to resource_post, notice: t('.success')
     else
-      redirect_to post_path(resource_post), status: :unprocessable_entity, notice: t('.failure')
+      redirect_back(fallback_location: resource_post)
+      flash[:notice] = t('.failure')
     end
   end
 
@@ -19,10 +20,11 @@ class Posts::CommentsController < Posts::ApplicationController
 
     if user_verified?
       @comment.destroy
-      redirect_to post_path(resource_post), notice: t('.success')
+      flash[:notice] = t('.success')
     else
-      redirect_to post_path(resource_post), notice: t('.failure')
+      flash[:notice] = t('.failure')
     end
+    redirect_to resource_post
   end
 
   private
