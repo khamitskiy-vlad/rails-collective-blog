@@ -2,7 +2,7 @@
 
 class CategoriesController < ApplicationController
   def show
-    @category = Category.find_by(id: params[:id])
-    @posts = @category.posts.includes(:likes, :comments, :creator)
+    @category = Category.find(params[:id])
+    @posts = @category.posts.includes(:creator)
   end
 end
