@@ -1,12 +1,12 @@
 databases:
-  - name: rails_project_64_production
-    databaseName: rails_project_64_production
-    user: rails_project_64
+  - name: digibash_production
+    databaseName: digibash_production
+    user: digibash
     plan: free
 
 services:
   - type: web
-    name: rails-project-64-corporate-blog
+    name: digibash
     runtime: ruby
     plan: free
     buildCommand: "./bin/render-build.sh"
@@ -15,7 +15,7 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: rails_project_64_production
+          name: digibash_production
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
