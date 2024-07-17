@@ -189,6 +189,7 @@ GEM
     nokogiri (1.16.6-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (8.6.3)
     parallel (1.25.1)
     parser (3.3.3.0)
       ast (~> 2.4.1)
@@ -244,6 +245,10 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.2.1)
+    ransack (4.2.0)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
     rdoc (6.7.0)
       psych (>= 4.0.0)
     regexp_parser (2.9.2)
@@ -378,10 +383,12 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   minitest-power_assert
+  pagy (~> 8.6)
   pg (~> 1.4)
   puma (>= 5.0)
   rails (~> 7.1)
   rails-i18n
+  ransack
   rubocop
   rubocop-performance
   rubocop-rails
