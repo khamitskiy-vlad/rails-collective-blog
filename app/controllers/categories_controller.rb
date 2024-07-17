@@ -5,7 +5,8 @@ class CategoriesController < ApplicationController
 
   def show
     @category = set_category
-    @pagy, @posts = pagy(set_posts)
+    @search_query = set_posts
+    @pagy, @posts = pagy(@search_query.result.includes(:creator))
   end
 
   private
@@ -15,6 +16,6 @@ class CategoriesController < ApplicationController
   end
 
   def set_posts
-    @category.posts.includes(:creator)
+    @category.posts.ransack(params[:search_query])
   end
 end

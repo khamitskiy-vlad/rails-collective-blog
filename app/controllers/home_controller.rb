@@ -4,12 +4,15 @@ class HomeController < ApplicationController
   include Pagy::Backend
 
   def index
-    @pagy, @posts = pagy(set_posts)
+    @search_query = set_posts
+    @pagy, @posts = pagy(@search_query.result
+                                     .order(created_at: :desc)
+                                     .includes(:likes, :comments, :creator, :category))
   end
 
   private
 
   def set_posts
-    Post.order(created_at: :desc).includes(:likes, :comments, :creator, :category)
-  end  
+    Post.ransack(params[:search_query])
+  end
 end
