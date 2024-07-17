@@ -2,11 +2,15 @@
   = link_to t('.feed'), root_path, class: 'link-primary text-decoration-none'
   span.fw-lighter
     |<> /
-  = @category.name
+  = locale_category_from(@category)
+  .float-end.fw-light
+    = render 'layouts/shared/search', search_query: @search_query, url: category_path(@category)
 .row
   .col-md-12
     .mb-3
       - @posts.each do |post|
         = render 'posts/posts', post:
-div
+.mb-3
   = link_to t('.back'), root_path, class: 'text-decoration-none'
+.
+  == pagy_bootstrap_nav(@pagy) if @pagy.pages > 1

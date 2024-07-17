@@ -9,6 +9,6 @@
     small.form-text
       = t('.body_symbols')
   .form-group.mb-3
-    = f.association :category, required: true, label: t('.category'), collection: categories, prompt: t('.select_category'), input_html: { class: 'form-control' }
+    = f.association :category, required: true, label: t('.category'), label_method: localed_column, prompt: t('.select_category'), input_html: { class: 'form-control' }
   .form-actions.mt-3
     = f.submit t('.publish'), class: 'btn btn-primary'

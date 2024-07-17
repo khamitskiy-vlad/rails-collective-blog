@@ -15,7 +15,7 @@
                 ul.dropdown-menu[aria-labelledby='navbarDropdown']
                   - @categories.each do |category|
                     li
-                      = link_to category.name, category_path(category), class: 'dropdown-item'
+                      = link_to locale_category_from(category), category_path(category), class: 'dropdown-item'
           - if user_signed_in?
             .container-fluid.p-0
               ul.nav.nav-pills
@@ -24,7 +24,7 @@
         ul.nav.nav-pills
           - if user_signed_in?
             li.nav-item.me-2
-              = link_to current_user.email, user_path(current_user), class: 'nav-link link-dark'
+              = link_to current_user.username, user_path(current_user), class: 'nav-link link-dark'
             li.nav-item.me-0
               = link_to t('.signout'), destroy_session_path(resource_name), data: { turbo_method: 'delete' }, class: 'nav-link link-secondary pe-0'
           - else

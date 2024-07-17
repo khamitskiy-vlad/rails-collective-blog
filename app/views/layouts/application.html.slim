@@ -15,10 +15,10 @@ html.h-100
       = yield
     footer.footer.mt-auto.py-3.bg-light
       .container
-        span.text-muted
-          = t('.hexlet_title')
-          .float-end
-            - if I18n.locale == I18n.default_locale
-              = link_to image_tag('/ru.png', width: '24'), request.path.concat('?locale=en')
-            - else
-              = link_to image_tag('/us.png', width: '24'), request.path.concat('?locale=ru')
+        a.bi.bi-github.link-secondary.text-decoration-none[href='https://github.com/khamitskiy-vlad']
+          =< t('.site_author')
+        .float-end
+          - if I18n.locale == I18n.default_locale
+            = link_to image_tag('/ru.png', width: '24'), root_path(locale: :en)
+          - else
+            = link_to image_tag('/us.png', width: '24'), root_path(locale: :ru)
