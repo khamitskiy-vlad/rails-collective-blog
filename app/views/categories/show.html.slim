@@ -1,10 +1,12 @@
-.mb-3.fw-semibold>
-  = link_to t('.feed'), root_path, class: 'link-primary text-decoration-none'
-  span.fw-lighter
-    |<> /
-  = locale_category_from(@category)
-  .float-end.fw-light
-    = render 'layouts/shared/search', search_query: @search_query, url: category_path(@category)
+.d-flex.justify-content-between.mb-3
+  div
+    = link_to t('.feed'), root_path, class: 'link-primary text-decoration-none me-1 fw-semibold'
+    span.fw-light.me-1
+      | /
+    span.fw-semibold
+      = locale_category_from(@category)
+  div
+    = render 'posts/search', search_query: @search_query, url: category_path(@category)
 .row
   .col-md-12
     .mb-3
