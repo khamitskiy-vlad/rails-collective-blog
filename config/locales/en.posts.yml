@@ -69,3 +69,6 @@ en:
       
       destroy:
         failure: You can't unlike
+
+    search:
+      search_post: Search Post

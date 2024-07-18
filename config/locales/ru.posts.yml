@@ -69,3 +69,6 @@ ru:
       
       destroy:
         failure: Вы не можете снять отметку Нравится
+
+    search:
+      search_post: Найти пост
