@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_14_161245) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_18_212943) do
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "route"
+    t.string "route", null: false
+    t.index ["name", "route"], name: "index_categories_on_name_and_route", unique: true
   end
 
   create_table "post_comments", force: :cascade do |t|
