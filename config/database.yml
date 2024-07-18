@@ -5,17 +5,17 @@ default: &default
 
 development:
   <<: *default
-  database: db/rails_project_64_development.sqlite3
+  database: db/digibash_development.sqlite3
 
 test:
   <<: *default
-  database: db/rails_project_64_test.sqlite3
+  database: db/digibash_test.sqlite3
 
 production:
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: rails_project_64_production
-  username: rails_project_64
+  database: digibash_production
+  username: digibash
   password: <%= ENV["RAILS_PROJECT_64_DATABASE_PASSWORD"] %>
   url: <%= ENV['DATABASE_URL'] %>

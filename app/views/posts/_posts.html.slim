@@ -1,22 +1,23 @@
-.border.rounded-3.mb-3.px-3.py-2
-          small.lh-1
-            span>
-              = link_to post.creator.username, user_path(post.creator), class: 'link-dark text-decoration-none'
-            span.fw-lighter
-              = time_ago_in_words(post.created_at)
-            p.pe-auto.mb-1
-              = link_to locale_category_from(post.category), category_path(post.category), class: 'link-dark text-decoration-none'
-          h3.text-break
-            = link_to post.title.truncate(75), post_path(post), class: 'link-dark text-decoration-none'
-          .
-            span.m-0.text-break
-              = post.body.truncate(400, omission: '... ')
-              = link_to t('.read'), post_path(post), class: 'text-decoration-none' if post.body.length > 400
-          .mt-2
-            small.text-secondary
-              small.bi.bi-chat-left.me-1
-              span
-                = post.comments.size
-              small.bi.bi-heart.ms-2.me-1
-              span
-                = post.likes.size
+.container.border.rounded-3.mb-3.px-3.py-2.text-break
+  div
+    small
+      span>
+        = link_to post.creator.username, user_path(post.creator), class: 'fw-medium link-dark text-decoration-none'
+      span.fw-lighter
+        = time_ago_in_words(post.created_at)
+      p.span
+        = link_to locale_category_from(post.category), category_path(post.category), class: 'fw-medium link-dark text-decoration-none'
+    h3
+      = link_to post.title.truncate(75), post_path(post), class: 'link-dark text-decoration-none'
+    .
+      span.m-0
+        = post.body.truncate(400, omission: '... ')
+        = link_to t('.read'), post_path(post), class: 'text-decoration-none' if post.body.length > 400
+    .mt-2
+      small.text-secondary
+        small.bi.bi-chat-left.me-1
+        span
+          = post.comments.size
+        small.bi.bi-heart.ms-2.me-1
+        span
+          = post.likes.size

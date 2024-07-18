@@ -1,7 +1,9 @@
-.mb-3.fw-semibold
-  = t('.feed')
-  .float-end.fw-light
-    = render 'layouts/shared/search', search_query: @search_query, url: root_path
+.d-flex.justify-content-between.mb-3
+  div
+    span.fw-semibold
+      = t('.feed')
+  div
+    = render 'posts/search', search_query: @search_query, url: root_path
 .row
   .col-md-12
     .mb-3

@@ -1,11 +1,14 @@
-.mb-3.fw-semibold>
-  = link_to t('.feed'), root_path, class: 'link-primary text-decoration-none'
-  span.fw-lighter
-    |<> /
-  = link_to locale_category_from(@category), category_path(@category), class: 'link-primary text-decoration-none'
-  span.fw-lighter
-    |<> /
-  = t('.post')
+.d-flex.mb-3
+  div
+    = link_to t('.feed'), root_path, class: 'link-primary text-decoration-none me-1 fw-semibold'
+    span.fw-light.me-1
+      | /
+    span.fw-semibold.me-1
+      = link_to locale_category_from(@category), category_path(@category), class: 'link-primary text-decoration-none'
+    span.fw-light.me-1
+      | /
+    span.fw-semibold
+      = t('.post')
 .mb-3
   small.lh-1
     span> = link_to @creator.username, user_path(@creator), class: 'link-dark text-decoration-none'

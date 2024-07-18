@@ -1,34 +1,29 @@
 .container.mb-2
-      .d-flex.flex-wrap.align-items-center.py-2.border-bottom
-        .navbar.navbar-expand-md.navbar-light.me-auto
-          .container-fluid.p-0
-            .navbar-brand.me-md-4
-              = link_to root_path, class: 'text-decoration-none' do
-                = image_tag('/digibash_logo.png', width: '20')
-                text.fw-semibold.link-dark.ms-1
-                  = t('.site_name')
-          .container-fluid.p-0
-            ul.navbar-nav.me-auto.mb-2.mb-md-0
-              li.nav-item.dropdown
-                a.nav-link.dropdown-toggle.me-4[id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-expanded='false']
-                  = t('.categories')
-                ul.dropdown-menu[aria-labelledby='navbarDropdown']
-                  - @categories.each do |category|
-                    li
-                      = link_to locale_category_from(category), category_path(category), class: 'dropdown-item'
-          - if user_signed_in?
-            .container-fluid.p-0
-              ul.nav.nav-pills
-                li.nav-item
-                  = link_to t('.new_post'), new_post_path, class: 'nav-link link-dark p-0 ms-2'
+  .d-flex.flex-wrap.align-items-center.py-2.border-bottom
+    .navbar.navbar-expand-md.navbar-light.me-auto
+      .navbar-brand.me-md-2
+        = link_to root_path, class: 'text-decoration-none' do
+          = image_tag('/digibash_logo.png', width: '20')
+          text.fw-semibold.link-dark.ms-1
+            = t('.site_name')
+    ul.nav.nav-pills
+      li.nav-item.dropdown.me-2
+        a.nav-link.dropdown-toggle.me-0[id='navbarDropdown' class='nav-link link-dark' role='button' data-bs-toggle='dropdown' aria-expanded='false']
+          = t('.categories')
+        ul.dropdown-menu[aria-labelledby='navbarDropdown']
+          - @categories.each do |category|
+            = link_to locale_category_from(category), category_path(category), class: 'dropdown-item'
+      - if user_signed_in?
+        li.nav-item.nav-pills.me-2
+          = link_to t('.new_post'), new_post_path, class: 'nav-link link-dark'
+      - if user_signed_in?
+        li.nav-item.nav-pills.me-2
+          = link_to current_user.username, user_path(current_user), class: 'nav-link link-dark'
+        li.nav-item.nav-pills.me-2
+          = link_to t('.signout'), destroy_session_path(resource_name), data: { turbo_method: 'delete' }, class: 'nav-link link-secondary pe-0'
+      - else
         ul.nav.nav-pills
-          - if user_signed_in?
-            li.nav-item.me-2
-              = link_to current_user.username, user_path(current_user), class: 'nav-link link-dark'
-            li.nav-item.me-0
-              = link_to t('.signout'), destroy_session_path(resource_name), data: { turbo_method: 'delete' }, class: 'nav-link link-secondary pe-0'
-          - else
-            li.nav-item.me-2
-              = link_to t('.signin'), new_session_path(resource_name), class: 'link-dark nav-link'
-            li.nav-item.me-0
-              = link_to t('.signup'), new_registration_path(resource_name), class: 'link-secondary pe-0 nav-link'
+          li.nav-item.nav-pills.me-2
+            = link_to t('.signin'), new_session_path(resource_name), class: 'link-dark nav-link'
+          li.nav-item.nav-pills.me-2
+            = link_to t('.signup'), new_registration_path(resource_name), class: 'link-secondary pe-0 nav-link'

@@ -6,7 +6,9 @@ class CategoriesController < ApplicationController
   def show
     @category = set_category
     @search_query = set_posts
-    @pagy, @posts = pagy(@search_query.result.includes(:creator))
+    @pagy, @posts = pagy(@search_query.result
+                                      .order(created_at: :desc)
+                                      .includes(:creator))
   end
 
   private
