@@ -6,8 +6,8 @@ class HomeController < ApplicationController
   def index
     @search_query = set_posts
     @pagy, @posts = pagy(@search_query.result
-                                     .order(created_at: :desc)
-                                     .includes(:likes, :comments, :creator, :category))
+                                      .order(created_at: :desc)
+                                      .includes(:likes, :comments, :creator, :category))
   end
 
   private
