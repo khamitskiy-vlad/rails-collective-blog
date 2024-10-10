@@ -28,6 +28,7 @@ gem 'stackprof'
 gem 'stimulus-rails'
 gem 'turbo-rails', '~> 1.0.0'
 gem 'tzinfo-data', platforms: %i[windows jruby]
+gem 'webrick', '~> 1.8', '>= 1.8.2'
 
 group :production do
   gem 'pg', '~> 1.4'
